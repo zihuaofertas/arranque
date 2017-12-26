@@ -1,0 +1,57 @@
+@import "reset";
+
+// media mixing sass
+@cel: ~"(max-width: 479px)";
+@tableta: ~"(max-width: 768px)";
+@tableta_land: ~"(max-width: 1024px)";
+@hd:~"(min-width: 1600px)";
+$cel: 479px;
+$tableta: 768px;
+$tableta-land: 1024px;
+$hd: 1600px;
+
+@mixin cel {
+  @media (min-width: #{$cel}) and (max-width: #{$tableta - 1px}) {
+    @content;
+  }
+}
+
+@mixin tableta_land {
+  @media (min-width: #{$tableta-land}) and (max-width: #{$hd - 1px}) {
+    @content;
+  }
+}
+
+@mixin tableta {
+  @media (min-width: #{$tableta}) and (max-width: #{$tableta-land - 1px}) {
+    @content;
+  }
+}
+
+@mixin hd {
+  @media (min-width: #{$hd}) {
+    @content;
+  }
+}
+
+.contanedor {
+    max-width: 1600px;
+    
+}
+
+.menu {
+    border: solid 1px red;
+    @include cel{
+         border: solid 1px blue;
+    }
+    @include tableta{
+         border: solid 1px black;
+    }
+    ul{
+        li{display: inline-block;}
+    }
+}
+
+.grisBg {
+    background: grey;
+}
